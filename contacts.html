@@ -4,84 +4,155 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Контакты</title>
+<!-- Шрифт Orbitron для стиля -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+<!-- Иконки Discord через CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <style>
-    body {
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        justify-content: center;
-    }
+  /* Общий стиль сайта */
+  body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: black; /* черный фон */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeInBody 2s forwards;
+  }
 
-    header {
-        text-align: center;
-        margin-bottom: 40px;
+  @keyframes fadeInBody {
+    to {
+      opacity: 1;
     }
+  }
 
+  /* Заголовок с свечением и эффектом */
+  header {
+    background: rgba(44, 0, 62, 0.8);
+    padding: 60px 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+    position: relative;
+    backdrop-filter: blur(5px);
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 60px;
+    margin: 0;
+    color: #e0b0ff;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px #e0b0ff, 0 0 20px #b200ff;
+    letter-spacing: 2px;
+  }
+
+  /* Контейнер для кнопок */
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Общий стиль кнопки */
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 40px;
+    width: 220px;
+    font-size: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(75, 0, 130, 0.4);
+    transition: all 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInButton 1s forwards;
+    cursor: pointer;
+  }
+
+  @keyframes fadeInButton {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Стиль для кнопки "Дискорд" - без градиента, с цветом логотипа */
+  .discord {
+    background-color: #5865F2; /* Цвет логотипа Discord - синий */
+    color: #e754ff; /* Пурпурный цвет текста, чуть розоватый */
+    box-shadow: 0 0 15px rgba(88,101,242,0.4);
+  }
+
+  .discord:hover {
+    background-color: #4752C4; /* Более темный синий при наведении */
+    box-shadow: 0 0 30px rgba(88,101,242,0.6);
+    transform: translateY(-5px);
+  }
+
+  /* Иконка Discord — оставить в синим */
+  .discord i {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #5865F2; /* Цвет иконки совпадает с фоном кнопки */
+  }
+
+  /* Стиль кнопки "Вернуться" */
+  .back-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #000000, #4b0082);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(138, 43, 226, 0.4);
+    transition: all 0.3s ease, transform 0.2s;
+    opacity: 0;
+    animation: fadeInButton 1s forwards;
+  }
+
+  .back-button:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: translateY(-3px);
+  }
+
+  /* Анимационные задержки для кнопок */
+  .button:nth-child(1) { animation-delay: 0.7s; }
+  .back-button { animation-delay: 1.2s; }
+
+  /* Адаптивность */
+  @media(max-width: 600px) {
     header h1 {
-        font-size: 36px;
-        color: #8A2BE2;
-        margin: 0;
-        font-family: 'Arial Black', sans-serif;
+      font-size: 28px;
     }
-
-    /* Кнопки */
     .button {
-        display: inline-block;
-        padding: 15px 30px;
-        margin: 20px 0;
-        background-color: #5865F2; /* Цвет Discord */
-        color: #fff;
-        font-size: 20px;
-        border-radius: 8px;
-        text-decoration: none;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        transition: background-color 0.3s, transform 0.2s;
+      width: 80%;
+      font-size: 18px;
     }
-
-    .button:hover {
-        background-color: #7a5ef0;
-        transform: scale(1.05);
-    }
-
-    /* Кнопка назад */
-    .back-button {
-        background-color: #6a0dad;
-    }
-
-    .back-button:hover {
-        background-color: #9b30ff;
-    }
-
-    /* Адаптивность */
-    @media(max-width: 600px) {
-        header h1 {
-            font-size: 28px;
-        }
-        .button {
-            width: 80%;
-            font-size: 18px;
-            text-align: center;
-        }
-    }
+  }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Контакты</h1>
+  <h1>Контакты</h1>
 </header>
 
-<!-- Кнопка Discord -->
-<a href="#" class="button">Discord</a>
-
-<!-- Кнопка назад -->
-<a href="index.html" class="button back-button">Назад</a>
+<div class="buttons-container">
+  <!-- Кнопка Discord с цветом логотипа и розовым текстом -->
+  <a href="#" class="button discord">
+    <i class="fab fa-discord"></i> Discord
+  </a>
+  <!-- Кнопка "Назад" с белым текстом -->
+  <a href="index.html" class="back-button">Вернуться на главную</a>
+</div>
 
 </body>
 </html>
