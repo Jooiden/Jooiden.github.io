@@ -4,193 +4,217 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Члены клана - "Orden Drago"</title>
+<!-- Подключение шрифта -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
 <style>
-    body {
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        line-height: 1.6;
-        padding: 20px;
-    }
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: black; /* черный фон */
+  color: #fff;
+  padding: 20px;
+  line-height: 1.6;
+}
 
-    header {
-        background-color: #8A2BE2;
-        padding: 30px 20px;
-        text-align: center;
-        color: #fff;
-    }
+/* Заголовок */
+header {
+  background: rgba(44, 0, 62, 0.8);
+  padding: 60px 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  margin-bottom: 40px;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+header h1 {
+  font-size: 60px;
+  margin: 0;
+  color: #e0b0ff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 10px #e0b0ff, 0 0 20px #b200ff;
+  letter-spacing: 2px;
+  text-align: center;
+}
 
-    header h1 {
-        margin: 0;
-        font-size: 36px;
-        font-family: 'Arial Black', sans-serif;
-    }
+/* Древо структуры */
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
 
-    /* Стиль дерева */
-    .tree {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 40px;
-    }
+/* Узлы (участники) */
+.node {
+  background-color: #6a0dad;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin: 10px 0;
+  font-weight: bold;
+  text-align: center;
+  min-width: 200px;
+  position: relative;
+}
 
-    .node {
-        background-color: #6a0dad;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        margin: 10px 0;
-        font-weight: bold;
-        text-align: center;
-        min-width: 200px;
-        position: relative;
-    }
+/* Для изображений участников */
+.guardian-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+.guardian-image img {
+  width: 80px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+.guardian-image img:hover {
+  transform: scale(1.05);
+}
 
-    /* Вставляем стиль для картинки с подписью */
-    .guardian-image {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        cursor: pointer;
-        position: relative;
-    }
+/* Всплывающее окно */
+.popup {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: none;
+  width: 250px;
+  z-index: 10;
+  text-align: center;
+}
+.popup img {
+  width: 100px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.popup div {
+  margin: 5px 0;
+}
 
-    .guardian-image img {
-        width: 80px; /* или по желанию */
-        height: auto;
-        border-radius: 8px;
-        transition: transform 0.2s;
-    }
+/* Линии и уровни */
+.h-line {
+  width: 100%;
+  height: 2px;
+  background: #444;
+  margin: 20px 0;
+}
+.level {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
 
-    .guardian-image img:hover {
-        transform: scale(1.05);
-    }
+/* Стиль кнопки "Вернуться" в стиле сайта */
+.back-button {
+  display: inline-block;
+  margin-top: 50px;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #000000, #4b0082);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(138, 43, 226, 0.4);
+  transition: all 0.3s ease, transform 0.2s;
+  opacity: 0;
+  animation: fadeInButton 1s forwards;
+}
+.back-button:hover {
+  background-color: #9b30ff;
+  transform: scale(1.05);
+}
 
-    /* Всплывающее окно */
-    .popup {
-        position: absolute;
-        top: 120%; /* чуть ниже картинки */
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #fff;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        display: none; /* по умолчанию скрыто */
-        z-index: 10;
-        width: 250px;
-        text-align: center;
-    }
+/* Анимация появления кнопки */
+@keyframes fadeInButton {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    /* Внутреннее содержимое всплывающего окна */
-    .popup img {
-        width: 100px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-    }
-
-    /* Линии и уровни отключены для этого примера, оставляем по прежнему стилю */
-
-    /* Кнопка назад */
-    .back-button {
-        display: inline-block;
-        margin-top: 50px;
-        padding: 12px 24px;
-        background-color: #6a0dad;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        font-size: 18px;
-        transition: background-color 0.3s, transform 0.2s;
-    }
-    .back-button:hover {
-        background-color: #9b30ff;
-        transform: scale(1.05);
-    }
-
-    /* Адаптивность */
-    @media(max-width: 600px) {
-        .node {
-            min-width: 150px;
-            font-size: 16px;
-        }
-        .back-button {
-            width: 80%;
-            text-align: center;
-        }
-        .guardian-image img {
-            width: 60px;
-        }
-    }
+/* Адаптивность */
+@media(max-width: 600px) {
+  header h1 {
+    font-size: 40px;
+  }
+  .node {
+    min-width: 150px;
+  }
+  .back-button {
+    width: 80%;
+    text-align: center;
+  }
+  .guardian-image img {
+    width: 60px;
+  }
+}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Члены клана "Orden Drago"</h1>
+  <h1>Члены клана "Orden Drago"</h1>
 </header>
 
 <div class="tree">
-    <!-- Хранитель -->
-    <div class="node">Хранитель</div>
-    
-    <!-- В центре - картинка с подписью и всплывающим -->
-    <div class="guardian-image" id="guardian">
-        <img src="Gravity1.png" alt="Gravity" />
-        <div class="popup" id="popup">
-            <img src="Gravity1.png" alt="Gravity" />
-            <div>07.12.2005</div>
-            <div>Воспринимаю все в серьез, шутки воспринимаю только если в конце написано «шутка»</div>
-        </div>
-        <div style="margin-top:5px;">Gravity</div>
+  <!-- Хранитель -->
+  <div class="node">Хранитель</div>
+  
+  <!-- Центр: картинка с подписью и всплывающим -->
+  <div class="guardian-image" id="guardian">
+    <img src="Gravity1.png" alt="Gravity" />
+    <div class="popup" id="popup">
+      <img src="Gravity1.png" alt="Gravity" />
+      <div>07.12.2005</div>
+      <div>Воспринимаю все в серьез, шутки воспринимаю только если в конце написано «шутка»</div>
     </div>
-    
-    <!-- Горизонтальная линия между Хранителем и Сенатом -->
+    <div style="margin-top:5px;">Gravity</div>
+  </div>
+
+  <!-- Линия между Хранителем и Сенатом -->
+  <div class="h-line"></div>
+
+  <!-- Сенат -->
+  <div class="level">
+    <div class="node">Сенат</div>
+  </div>
+
+  <!-- Линия между Сенатом и следующими -->
+  <div class="h-line"></div>
+
+  <!-- Должности: Стражи, Паладины, Рыцари, Лайтовцы -->
+  <div class="level">
+    <div class="node">Страж</div>
     <div class="h-line"></div>
-    <!-- Группа "Сенат" -->
-    <div class="level">
-        <div class="node">Сенат</div>
-    </div>
-    <!-- Горизонтальная линия между Сенатом и Стражем -->
+    <div class="node">Паладин</div>
     <div class="h-line"></div>
-    <!-- Должности с горизонтальными линиями -->
-    <div class="level">
-        <div class="node-container">
-            <div class="node">Страж</div>
-        </div>
-        <div class="h-line"></div>
-        <div class="node-container">
-            <div class="node">Паладин</div>
-        </div>
-        <div class="h-line"></div>
-        <div class="node-container">
-            <div class="node">Рыцарь</div>
-        </div>
-        <div class="h-line"></div>
-        <div class="node-container">
-            <div class="node">Лайтовцы</div>
-        </div>
-    </div>
+    <div class="node">Рыцарь</div>
+    <div class="h-line"></div>
+    <div class="node">Лайтовцы</div>
+  </div>
 </div>
 
-<!-- Кнопка назад -->
+<!-- Кнопка "Вернуться на главную" -->
 <a href="index.html" class="back-button">Вернуться на главную</a>
 
 <script>
-    const guardian = document.getElementById('guardian');
-    const popup = document.getElementById('popup');
+  const guardian = document.getElementById('guardian');
+  const popup = document.getElementById('popup');
 
-    guardian.addEventListener('mouseenter', () => {
-        popup.style.display = 'block';
-    });
-    guardian.addEventListener('mouseleave', () => {
-        popup.style.display = 'none';
-    });
+  guardian.addEventListener('mouseenter', () => {
+    popup.style.display = 'block';
+  });
+  guardian.addEventListener('mouseleave', () => {
+    popup.style.display = 'none';
+  });
 </script>
 
 </body>
