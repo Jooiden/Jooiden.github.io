@@ -4,102 +4,118 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Галерея</title>
+<!-- Подключение шрифта Orbitron для стильных заголовков -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
 <style>
-    body {
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        padding: 20px;
-    }
+  /* Общий стиль страницы с черным фоном и шрифтами */
+  body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: black; /* черный фон */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
 
-    header {
-        background-color: #8A2BE2;
-        padding: 30px 20px;
-        text-align: center;
-        color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        margin-bottom: 20px;
-    }
+  /* Заголовок с свечением и эффектом */
+  header {
+    background: rgba(44, 0, 62, 0.8);
+    padding: 60px 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+  }
 
+  header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #e0b0ff;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px #e0b0ff, 0 0 20px #b200ff;
+  }
+
+  /* Галерея контейнера - сетка */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  /* Заглушки для изображений */
+  .placeholder {
+    background-color: #222; /* немного темнее для свечения */
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #aaa;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  /* Эффекты при наведении на заглушки */
+  .placeholder:hover {
+    background-color: #444;
+    box-shadow: 0 0 20px #b200ff, inset 0 0 10px rgba(0,0,0,0.5);
+    transform: scale(1.02);
+  }
+
+  /* Стиль кнопки "Вернуться" */
+  .back-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #000000, #4b0082);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(138, 43, 226, 0.4);
+    transition: all 0.3s ease, transform 0.2s;
+    /* Удалите следующую строку, чтобы кнопка была видимой */
+    /* opacity: 0; */
+  }
+
+  .back-button:hover {
+    background-color: #9b30ff;
+    transform: scale(1.05);
+  }
+
+  /* Адаптивность для мобильных устройств */
+  @media(max-width: 600px) {
     header h1 {
-        margin: 0;
-        font-size: 36px;
-        font-family: 'Arial Black', sans-serif;
+      font-size: 28px;
     }
-
-    /* Галерея контейнера */
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-    }
-
-    /* Заглушки для изображений */
-    .placeholder {
-        background-color: #ccc;
-        height: 150px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: #555;
-        border-radius: 8px;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-        transition: background-color 0.3s;
-    }
-
-    /* Кнопка назад */
     .back-button {
-        display: inline-block;
-        margin-top: 30px;
-        padding: 12px 24px;
-        background-color: #6a0dad;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        font-size: 18px;
-        transition: background-color 0.3s, transform 0.2s;
+      width: 80%;
+      text-align: center;
+      font-size: 16px;
     }
-    .back-button:hover {
-        background-color: #9b30ff;
-        transform: scale(1.05);
-    }
-
-    /* Адаптивность */
-    @media(max-width: 600px) {
-        header h1 {
-            font-size: 28px;
-        }
-        .back-button {
-            width: 80%;
-            text-align: center;
-            font-size: 16px;
-        }
-    }
+  }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Галерея</h1>
+  <h1>Галерея</h1>
 </header>
 
 <div class="gallery">
-    <!-- Заглушки для изображений -->
-    <div class="placeholder">Картинка 1</div>
-    <div class="placeholder">Картинка 2</div>
-    <div class="placeholder">Картинка 3</div>
-    <div class="placeholder">Картинка 4</div>
-    <div class="placeholder">Картинка 5</div>
-    <div class="placeholder">Картинка 6</div>
-    <!-- Можно добавлять больше по мере необходимости -->
+  <!-- Заглушки для изображений -->
+  <div class="placeholder">Картинка 1</div>
+  <div class="placeholder">Картинка 2</div>
+  <div class="placeholder">Картинка 3</div>
+  <div class="placeholder">Картинка 4</div>
+  <div class="placeholder">Картинка 5</div>
+  <div class="placeholder">Картинка 6</div>
+  <!-- Можно добавлять больше по необходимости -->
 </div>
 
-<!-- Кнопка назад -->
-<a href="index.html" class="back-button">Назад</a>
+<!-- Кнопка назад в стиле сайта -->
+<a href="index.html" class="back-button">Вернуться на главную</a>
 
 </body>
 </html>
