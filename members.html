@@ -48,46 +48,52 @@
         position: relative;
     }
 
-    /* Линии соединения */
-    .children {
+    /* Вставляем стиль для картинки с подписью */
+    .guardian-image {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: 10px;
+        cursor: pointer;
+        position: relative;
     }
 
-    /* Вертикальная линия */
-    .line {
-        width: 2px;
-        height: 20px;
-        background-color: #8A2BE2;
-        margin: 0 auto;
+    .guardian-image img {
+        width: 80px; /* или по желанию */
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.2s;
     }
 
-    /* Горизонтальная линия между должностями и уровнями */
-    .h-line {
-        height: 4px;
-        width: 100%;
-        max-width: 600px;
-        background-color: #8A2BE2;
-        margin: 10px auto;
-        border-radius: 2px;
-        box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    .guardian-image img:hover {
+        transform: scale(1.05);
     }
 
-    /* Обертка для уровня */
-    .level {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        margin-top: 20px;
+    /* Всплывающее окно */
+    .popup {
+        position: absolute;
+        top: 120%; /* чуть ниже картинки */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        display: none; /* по умолчанию скрыто */
+        z-index: 10;
+        width: 250px;
+        text-align: center;
     }
 
-    /* Обертка для каждого узла + линий */
-    .node-container {
-        display: flex;
-        align-items: center;
+    /* Внутреннее содержимое всплывающего окна */
+    .popup img {
+        width: 100px;
+        margin-bottom: 10px;
+        border-radius: 8px;
     }
+
+    /* Линии и уровни отключены для этого примера, оставляем по прежнему стилю */
 
     /* Кнопка назад */
     .back-button {
@@ -117,11 +123,8 @@
             width: 80%;
             text-align: center;
         }
-        .level {
-            flex-direction: column;
-        }
-        .node-container {
-            margin: 10px 0;
+        .guardian-image img {
+            width: 60px;
         }
     }
 </style>
@@ -135,6 +138,18 @@
 <div class="tree">
     <!-- Хранитель -->
     <div class="node">Хранитель</div>
+    
+    <!-- В центре - картинка с подписью и всплывающим -->
+    <div class="guardian-image" id="guardian">
+        <img src="Gravity.png" alt="Gravity" />
+        <div class="popup" id="popup">
+            <img src="Gravity.png" alt="Gravity" />
+            <div>xx.xx.xxxx</div>
+            <div>ГРАВИТИ В УЖАСЕ</div>
+        </div>
+        <div style="margin-top:5px;">Gravity</div>
+    </div>
+    
     <!-- Горизонтальная линия между Хранителем и Сенатом -->
     <div class="h-line"></div>
     <!-- Группа "Сенат" -->
@@ -165,6 +180,18 @@
 
 <!-- Кнопка назад -->
 <a href="index.html" class="back-button">Вернуться на главную</a>
+
+<script>
+    const guardian = document.getElementById('guardian');
+    const popup = document.getElementById('popup');
+
+    guardian.addEventListener('mouseenter', () => {
+        popup.style.display = 'block';
+    });
+    guardian.addEventListener('mouseleave', () => {
+        popup.style.display = 'none';
+    });
+</script>
 
 </body>
 </html>
