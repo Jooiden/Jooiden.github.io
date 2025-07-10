@@ -1,68 +1,94 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>Orden Drago</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orden Drago</title>
+<!-- Подключение шрифта для стильных заголовков -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* Общий стиль страницы с черным фоном */
+  body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: black; /* заменено на черный цвет */
+    /* background-image: url('your-background.jpg'); */ /* убрано, если есть */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease;
+    color: #fff;
+    text-align: center;
+  }
 
-        /* Стиль шапки */
-        header {
-            background-color: #800080; /* фиолетовый фон */
-            padding: 50px 20px;
-        }
+  /* Стиль шапки с эффектом свечения */
+  header {
+    background: rgba(44, 0, 62, 0.8);
+    padding: 60px 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+    position: relative;
+    backdrop-filter: blur(5px);
+  }
 
-        header h1 {
-            color: white;
-            font-size: 48px;
-            margin: 0;
-        }
+  header h1 {
+    font-size: 60px;
+    margin: 0;
+    color: #e0b0ff;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px #e0b0ff, 0 0 20px #b200ff;
+    letter-spacing: 2px;
+  }
 
-        /* Контейнер кнопок — в центр и в вертикальный столбик */
-        nav {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column; /* вертикальное расположение */
-            align-items: center; /* центрирование по горизонтали */
-            gap: 20px; /* расстояние между кнопками */
-        }
+  /* Контейнер кнопок — вертикальный столбик */
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
 
-        /* Стили кнопок */
-        a.button {
-            display: block;
-            padding: 15px 25px;
-            background-color: #4B0082; /* темно-фиолетовый */
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            border-radius: 8px;
-            width: 200px; /* фиксированная ширина для симметрии */
-            text-align: center; /* текст по центру внутри кнопки */
-            transition: background-color 0.3s;
-        }
+  /* Стиль кнопок с одинаковым размером и градиентным фоном */
+  a.button {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 22px;
+    width: 200px; /* одинаковая ширина для всех кнопок */
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(45deg, #000000, #4b0082); /* градиент черно-фиолетовый */
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    transition: all 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
 
-        a.button:hover {
-            background-color: #6A0DAD; /* более светлый фиолетовый при наведении */
-        }
-    </style>
+  /* Эффект при наведении на кнопку */
+  a.button:hover {
+    background: linear-gradient(45deg, #4b0082, #000000);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+    transform: translateY(-5px);
+  }
+
+  /* Плавный скролл между страницами */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 </head>
 <body>
-    <!-- Шапка -->
-    <header>
-        <h1>Orden Drago</h1>
-    </header>
-    <!-- Меню с кнопками — в центр и в столбик -->
-    <nav>
-        <a href="about.html" class="button">История</a>
-        <a href="members.html" class="button">Состав</a>
-        <a href="gallery.html" class="button">Альбом</a>
-        <!-- Новая кнопка "Контакты" -->
-        <a href="contacts.html" class="button">Контакты</a>
-    </nav>
+
+<header>
+  <h1>Orden Drago</h1>
+</header>
+
+<nav>
+  <a href="about.html" class="button">История</a>
+  <a href="members.html" class="button">Состав</a>
+  <a href="gallery.html" class="button">Альбом</a>
+  <a href="contacts.html" class="button">Контакты</a>
+</nav>
+
 </body>
 </html>
