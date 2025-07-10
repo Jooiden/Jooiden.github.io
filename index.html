@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Orden Drago</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        /* Стиль шапки */
+        header {
+            background-color: #800080; /* фиолетовый фон */
+            padding: 50px 20px;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        /* Контейнер кнопок — в центр и в вертикальный столбик */
+        nav {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column; /* вертикальное расположение */
+            align-items: center; /* центрирование по горизонтали */
+            gap: 20px; /* расстояние между кнопками */
+        }
+
+        /* Стили кнопок */
+        a.button {
+            display: block;
+            padding: 15px 25px;
+            background-color: #4B0082; /* темно-фиолетовый */
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 8px;
+            width: 200px; /* фиксированная ширина для симметрии */
+            text-align: center; /* текст по центру внутри кнопки */
+            transition: background-color 0.3s;
+        }
+
+        a.button:hover {
+            background-color: #6A0DAD; /* более светлый фиолетовый при наведении */
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <h1>Orden Drago</h1>
+    </header>
+    <!-- Меню с кнопками — в центр и в столбик -->
+    <nav>
+        <a href="about.html" class="button">История</a>
+        <a href="members.html" class="button">Состав</a>
+        <a href="gallery.html" class="button">Альбом</a>
+        <!-- Новая кнопка "Контакты" -->
+        <a href="contacts.html" class="button">Контакты</a>
+    </nav>
+</body>
+</html>

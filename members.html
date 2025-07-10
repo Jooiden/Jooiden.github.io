@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Члены клана - "Союз Ванилы"</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+    }
+
+    header {
+        background-color: #8A2BE2;
+        padding: 30px 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 36px;
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    /* Стиль дерева */
+    .tree {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .node {
+        background-color: #6a0dad;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        margin: 10px 0;
+        font-weight: bold;
+        text-align: center;
+        min-width: 200px;
+        position: relative;
+    }
+
+    /* Линии соединения */
+    .children {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /* Вертикальная линия */
+    .line {
+        width: 2px;
+        height: 20px;
+        background-color: #8A2BE2;
+        margin: 0 auto;
+    }
+
+    /* Горизонтальная линия между должностями и уровнями */
+    .h-line {
+        height: 4px;
+        width: 100%;
+        max-width: 600px;
+        background-color: #8A2BE2;
+        margin: 10px auto;
+        border-radius: 2px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    }
+
+    /* Обертка для уровня */
+    .level {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin-top: 20px;
+    }
+
+    /* Обертка для каждого узла + линий */
+    .node-container {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Кнопка назад */
+    .back-button {
+        display: inline-block;
+        margin-top: 50px;
+        padding: 12px 24px;
+        background-color: #6a0dad;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        font-size: 18px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    .back-button:hover {
+        background-color: #9b30ff;
+        transform: scale(1.05);
+    }
+
+    /* Адаптивность */
+    @media(max-width: 600px) {
+        .node {
+            min-width: 150px;
+            font-size: 16px;
+        }
+        .back-button {
+            width: 80%;
+            text-align: center;
+        }
+        .level {
+            flex-direction: column;
+        }
+        .node-container {
+            margin: 10px 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Члены клана "Союз Ванилы"</h1>
+</header>
+
+<div class="tree">
+    <!-- Хранитель -->
+    <div class="node">Хранитель</div>
+    <!-- Горизонтальная линия между Хранителем и Сенатом -->
+    <div class="h-line"></div>
+    <!-- Группа "Сенат" -->
+    <div class="level">
+        <div class="node">Сенат</div>
+    </div>
+    <!-- Горизонтальная линия между Сенатом и Стражем -->
+    <div class="h-line"></div>
+    <!-- Должности с горизонтальными линиями -->
+    <div class="level">
+        <div class="node-container">
+            <div class="node">Страж</div>
+        </div>
+        <div class="h-line"></div>
+        <div class="node-container">
+            <div class="node">Паладин</div>
+        </div>
+        <div class="h-line"></div>
+        <div class="node-container">
+            <div class="node">Рыцарь</div>
+        </div>
+        <div class="h-line"></div>
+        <div class="node-container">
+            <div class="node">Лайтовцы</div>
+        </div>
+    </div>
+</div>
+
+<!-- Кнопка назад -->
+<a href="main.html" class="back-button">Вернуться на главную</a>
+
+</body>
+</html>
